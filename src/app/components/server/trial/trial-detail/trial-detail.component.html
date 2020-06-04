@@ -1,0 +1,39 @@
+<div class="container">
+
+  <table class="table table-hover">
+    <tbody>
+    <tr>
+      <td>Judge</td>
+      <td>Test User</td>
+      <td><a [routerLink]="['/server', serverID , 'trial', 1 ]" class="btn btn-danger">Resign</a></td>
+    </tr>
+
+    <tr>
+      <td>Accuser</td>
+      <td>Accuser User</td>
+      <td><a [routerLink]="['/server', serverID , 'trial', 1 ]" class="btn btn-warning">Accept</a></td>
+    </tr>
+
+    <tr>
+      <td>Defending</td>
+      <td>Defending User</td>
+      <td><a [routerLink]="['/server', serverID , 'trial', 1 ]" class="btn btn-warning">Accept</a></td>
+    </tr>
+
+    <tr>
+      <td>Evidence Post</td>
+      <td>Post Title</td>
+      <td><a [routerLink]="['/server', serverID , 'trial', 1 ]" class="btn btn-info">Open</a></td>
+    </tr>
+
+    <tr>
+      <td>Law</td>
+      <td>Defending User</td>
+      <td></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<app-comment-list></app-comment-list>
