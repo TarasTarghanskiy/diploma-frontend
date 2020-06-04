@@ -1,0 +1,56 @@
+<div class="container">
+
+  <nav aria-label="Page navigation example" class="flex-row">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" (click)="changePage(currentPage - 10)" style="color: black" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li *ngFor="let p of pageList | async">
+        <a style="color: black" (click)="changePage(p)" [class.active]="currentPage === p" class="page-link">{{p}}</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" style="color: black" (click)="changePage(currentPage - 10)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Variants</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let v of list | async">
+      <th>ID-{{v.voteID}}</th>
+      <td>{{v.description}}</td>
+      <td>{{v.voteID === 1 ? 'Term': 'Law'}}</td>
+      <td>{{v.voteCreateDate | date:'dd.MM.yyyy   HH:mm:ss'}}</td>
+      <td>
+        <label>
+          <select [value]="v.value" class='select-option' #selectElement id="selectID">
+            <option *ngFor="let vv of v.voteVariantList" class='option' >{{vv.voteVariantDescription}}</option>
+          </select>
+        </label>
+      </td>
+      <td *ngIf="isUserAuthenticated">
+        <button [disabled]="!(v.voteActive && !v.voting)" (click)="vote(v, selectElement.selectedIndex)" class="btn btn-warning">Vote</button>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+

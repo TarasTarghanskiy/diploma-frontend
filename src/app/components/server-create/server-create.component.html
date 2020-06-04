@@ -1,0 +1,20 @@
+<div class="container">
+  <form [formGroup]="form" (submit)="submit()">
+
+    <label for="name">Name</label>
+
+
+    <input type="text" id="name" class="form-control" formControlName="name"
+           placeholder="Enter server here">
+
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Description</label>
+      <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+    <button class="btn btn-success" type="submit" [disabled]="form.invalid">Create</button>
+
+
+  </form>
+</div>

@@ -1,0 +1,25 @@
+<li class="nav-item dropdown">
+  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+     aria-haspopup="true" aria-expanded="false" (click)="click()">
+    <div class="d-flex justify-content-between">
+      <div>Personal News</div>
+      <div class="notification-icon">
+        <span class="glyphicon glyphicon-envelope"></span>
+        <span class="badge badge-secondary" [class.active]="newsCount > 0">{{newsCount}}</span>
+      </div>
+    </div>
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <div *ngFor="let s of storyList; trackBy: storyTracking">
+      <div>
+        <a class="dropdown-item" (mousemove)="s.viewed = true" [class.active]="!s.viewed"
+           [routerLink]="[s.story.link]">{{s.story.text}}</a>
+      </div>
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-item" (mousemove)="access ? load() : null">next</div>
+  </div>
+  <!--  <div *ngFor="let s of storyList | async">-->
+  <!--    {{s.storyID}}-->
+  <!--  </div>-->
+</li>

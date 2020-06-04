@@ -1,0 +1,21 @@
+<div class="container">
+  <div *ngIf="post">
+    <p>{{post.postID}}</p>
+    <p>{{post.title}}</p>
+    <div [innerHTML]="post.text"></div>
+    <app-opinion [postID]="post.postID"></app-opinion>
+    <div *ngIf="isUserAuthenticated">
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myPostModal">
+        Report
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="post">
+  <app-comment-list [postID]="post.postID"></app-comment-list>
+</div>
+
+<div class="modal" id="myPostModal" *ngIf="post">
+  <app-report-form [postID]="post.postID"></app-report-form>
+</div>

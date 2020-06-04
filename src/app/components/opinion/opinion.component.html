@@ -1,0 +1,7 @@
+<div class="row">
+  <div *ngIf="isUserAuthenticated">
+    <button class="btn btn-success" (click)="opinion(true)">Like</button>
+    <button class="btn btn-danger" (click)="opinion(false)">Dislike</button>
+  </div>
+  <div *ngIf="rating"> Rating: {{rating}} </div>
+</div>

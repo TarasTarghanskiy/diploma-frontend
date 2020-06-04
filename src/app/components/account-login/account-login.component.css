@@ -1,0 +1,89 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.invalid {
+  border-color: hsl(0, 100%, 70%);
+  color: hsl(0, 100%, 70%);
+  text-shadow:0 0 0 hsl(0, 100%, 70%);
+  box-shadow:0 0 0 .2rem hsl(0, 100%, 70%);
+}
+
+.invalid:focus {
+  color:#495057;
+  border-color:#80bdff;
+  text-shadow:0 0 0 #495057;
+  box-shadow:0 0 0 .2rem rgba(0,123,255,.25);
+}
+
+
+.main-head{
+  height: 150px;
+  background: #FFF;
+
+}
+
+.sidenav {
+  height: 100%;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+
+.main {
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+  .login-form{
+    margin-top: 10%;
+  }
+
+  .register-form{
+    margin-top: 10%;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .main{
+    margin-left: 40%;
+  }
+
+  .sidenav{
+    width: 40%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    margin-top: 5%;
+  }
+
+  .login-form{
+    margin-top: 60%;
+  }
+
+  .register-form{
+    margin-top: 20%;
+  }
+}
+
+
+.login-main-text{
+  margin-top: 20%;
+  padding: 60px;
+  color: black;
+}
+
+.login-main-text h2{
+  font-weight: 300;
+}
+
+.btn-black{
+  background-color: #000 !important;
+  color: #fff;
+}

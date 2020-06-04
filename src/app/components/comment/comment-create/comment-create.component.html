@@ -1,0 +1,17 @@
+<div class="d-flex flex-row comment-row m-t-0">
+  <div class="p-2">
+<!--    <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg" alt="user"-->
+<!--                        width="50" class="rounded-circle">-->
+  </div>
+  <div class="comment-text w-100">
+    <span class="m-b-15 d-block">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1"></label>
+        <textarea (keyup)="changeText($event)" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+    </span>
+    <div class="comment-footer">
+      <button (click)="send()" type="button" class="btn btn-success">Send</button>
+    </div>
+  </div>
+</div>

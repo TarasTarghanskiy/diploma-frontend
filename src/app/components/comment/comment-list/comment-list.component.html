@@ -1,0 +1,85 @@
+<div class="row d-flex justify-content-center mt-100 mb-100">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body text-center">
+        <h4 class="card-title"> Comments</h4>
+      </div>
+
+
+      <nav aria-label="Page navigation example" class="flex-row">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" (click)="changePage(currentPage - 10)" style="color: black" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li *ngFor="let p of pageList | async">
+            <a style="color: black" (click)="changePage(p)" [class.page-active]="currentPage === p" class="page-link">{{p}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" style="color: black" (click)="changePage(currentPage - 10)" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+
+      <div *ngIf="comment">
+        <div class="comment-footer">
+          <span class="text-muted float-right">{{comment.creationDate | date:'dd.MM.yyyy   HH:mm:ss'}}</span>
+          <div class="row">
+            <button type="button" class="btn btn-dark" (click)="back()">Back</button>
+            <div *ngIf="isUserAuthenticated">
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                Report
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="modal" id="myModal" *ngIf="comment">
+          <app-report-form [commentID]="comment.commentID"></app-report-form>
+        </div>
+
+        <hr>
+
+        <div class="d-flex flex-row comment-row">
+          <div class="p-2"><img src="http://localhost:8085/acc/avatar/{{comment.accountID}}" alt="user"
+                                width="50" class="rounded-circle"></div>
+          <div class="comment-text active w-100">
+            <h6 class="font-medium">{{comment.userName}}</h6> <span class="m-b-15 d-block">{{comment.text}}</span>
+          </div>
+        </div>
+        <app-opinion [commentID]="comment.commentID"></app-opinion><!-- Comment Row -->
+
+        <hr>
+
+      </div>
+
+
+      <app-comment-create (commentIsSend)="changePage(currentPage)" [postID]="postID" [comment]="comment"></app-comment-create>
+
+      <div *ngIf="list" class="comment-widgets">
+        <!-- Comment Row -->
+        <div class="d-flex flex-row comment-row m-t-0" *ngFor="let c of list | async">
+          <div class="p-2"><img src="http://localhost:8085/acc/avatar/{{c.accountID}}" alt="user"
+                                width="50" class="rounded-circle"></div>
+          <div class="comment-text w-100">
+            <h6 class="font-medium">{{c.userName}}</h6> <span class="m-b-15 d-block">{{c.text}}</span>
+            <div class="comment-footer">
+              <span class="text-muted float-right">{{c.creationDate | date:'dd.MM.yyyy   HH:mm:ss'}}</span>
+                <button type="button" class="btn btn-info" style="padding-right: 20px" (click)="open(c)">Open</button>
+                <app-opinion [commentID]="c.commentID"></app-opinion>
+
+            </div>
+          </div>
+        </div> <!-- Comment Row -->
+
+      </div> <!-- Card -->
+    </div>
+  </div>
+</div>

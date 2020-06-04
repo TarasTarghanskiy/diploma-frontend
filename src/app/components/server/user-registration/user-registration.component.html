@@ -1,0 +1,12 @@
+<div>
+  <form [formGroup]="userForm" (ngSubmit)="submit()">
+    <!--    <a [routerLink]="['/server/list']">back to list</a>-->
+    <div class="field">
+      <label for="name"></label>
+      <input id="name" placeholder="User  server name" formControlName="name">
+    </div>
+    <button type="submit" [disabled]="userForm.invalid">
+      send
+    </button>
+  </form>
+</div>

@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --port 4201 ",
+    "build": "ng build --prod",
+    "postbuild": "npm run deploy",
+    "predeploy": "rimraf ../backend/src/main/resources/static && mkdirp ../backend/src/main/resources/static",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "copyfiles -f dist/** ../backend/src/main/resources/static"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +44,11 @@
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "quill": "^1.3.7",
+    "ngx-quill": "^10.0.1",
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "@popperjs/core": "^2.4.0"
   }
 }

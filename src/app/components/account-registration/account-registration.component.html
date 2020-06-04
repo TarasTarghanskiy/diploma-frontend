@@ -1,0 +1,101 @@
+<div class="sidenav">
+  <div class="login-main-text">
+    <h2>Welcome<br> Registration Page</h2>
+    <p>Enter your data her to get access.</p>
+  </div>
+</div>
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
+
+
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label for="name">Account Name</label>
+
+          <!-- validation errors -->
+          <div *ngIf="form.get('name').dirty && form.get('name').invalid" class="error">
+            <small *ngIf="form.get('name').errors.required" [ngStyle]="{'color': 'red'}">
+              enter account name
+            </small>
+            <small *ngIf="form.get('name').errors.minlength" [ngStyle]="{'color': 'red'}">
+              min length should be {{form.get('name').errors.minlength.actualLength}}
+              /{{form.get('name').errors.minlength.requiredLength}}
+            </small>
+            <small *ngIf="form.get('name').errors.maxlength" [ngStyle]="{'color': 'red'}">
+              length should be
+              decrease: {{form.get('name').errors.maxlength.actualLength - form.get('name').errors.maxlength.requiredLength}}
+            </small>
+          </div>
+          <!-- validation errors -->
+
+          <input type="text" id="name" class="form-control"
+                 [ngClass]="{invalid : form.get('name').dirty && form.get('name').invalid}"
+                 placeholder="User Name" formControlName="name">
+        </div>
+
+
+        <div class="form-group">
+          <label for="password">Password</label>
+
+          <!-- validation errors -->
+          <div *ngIf="form.get('password').dirty && form.get('password').invalid" class="error">
+            <small *ngIf="form.get('password').errors.required" [ngStyle]="{'color': 'red'}">
+              enter account password
+            </small>
+            <small *ngIf="form.get('password').errors.minlength" [ngStyle]="{'color': 'red'}">
+              min length should be {{form.get('password').errors.minlength.actualLength}}
+              /{{form.get('password').errors.minlength.requiredLength}}
+            </small>
+            <small *ngIf="form.get('password').errors.maxlength" [ngStyle]="{'color': 'red'}">
+              length should be
+              decrease: {{form.get('password').errors.maxlength.actualLength - form.get('password').errors.maxlength.requiredLength}}
+            </small>
+          </div>
+          <!-- validation errors -->
+
+          <input type="password" id="password" class="form-control"
+                 [ngClass]="{invalid : form.get('password').dirty && form.get('password').invalid}"
+                 placeholder="Password" formControlName="password">
+
+        </div>
+
+        <div class="form-group">
+          <label for="repeat">Repeat password</label>
+
+          <!-- validation errors -->
+          <div *ngIf="form.get('repeat').dirty && form.get('repeat').invalid" class="error">
+            <small *ngIf="form.get('repeat').errors.required" [ngStyle]="{'color': 'red'}">
+              repeat password
+            </small>
+          </div>
+          <div *ngIf="form.get('repeat').dirty && form.invalid && form.errors !== null" class="error">
+            <small [ngStyle]="{'color': 'red'}">
+              passwords are different
+            </small>
+          </div>
+          <!-- validation errors -->
+
+          <input type="password" id="repeat" class="form-control"
+                 [ngClass]="{invalid : form.get('repeat').dirty && (form.get('repeat').invalid || form.errors)}"
+                 placeholder="Repeat password" formControlName="repeat">
+
+        </div>
+
+
+        <button type="submit" class="btn btn-black" [disabled]="form.invalid || submitted">Sigh Up</button>
+
+        <!-- server errors -->
+        <div *ngIf="errorList">
+          <div *ngFor="let e of errorList;" [ngStyle]="{'color': 'red'}">
+            {{e}}
+          </div>
+        </div>
+        <!-- server errors -->
+
+      </form>
+
+
+    </div>
+  </div>
+</div>

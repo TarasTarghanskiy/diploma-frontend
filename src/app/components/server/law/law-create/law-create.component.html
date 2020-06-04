@@ -1,0 +1,23 @@
+<div class="container">
+  <form [formGroup]="form" (submit)="submit()">
+
+    <div *ngIf="!form.value.block">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" formControlName="lawText" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+    </div>
+
+
+    <label for="name">Punishment count</label>
+
+
+    <input type="number" id="name" class="form-control" formControlName="punishmentCount"
+           placeholder="Enter term here">
+
+
+    <button class="btn btn-success" type="submit" [disabled]="form.invalid">Create</button>
+
+
+  </form>
+</div>

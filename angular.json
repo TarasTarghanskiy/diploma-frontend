@@ -24,9 +24,16 @@
               "src/assets"
             ],
             "styles": [
+              {
+                "input": "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              },
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "diploma-frontend"
+    }
+  },
+  "defaultProject": "diploma-frontend",
+  "cli": {
+    "analytics": "55da87d8-75c0-490b-8dae-98da30cfdb7a"
+  }
 }

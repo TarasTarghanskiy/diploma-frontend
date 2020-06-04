@@ -1,0 +1,67 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h4 class="modal-title">Choose laws that were violated</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+
+    <!-- Modal body -->
+    <div *ngIf="list" class="modal-body">
+      <nav aria-label="Page navigation example" class="flex-row">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" (click)="changePage(currentPage - 10)" style="color: black" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li *ngFor="let p of pageList | async">
+            <a style="color: black" (click)="changePage(p)" [class.active]="currentPage === p"
+               class="page-link">{{p}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" style="color: black" (click)="changePage(currentPage - 10)" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let t of list">
+            <th>ID-{{t.lawID}}</th>
+            <td>{{t.lawText}}</td>
+            <td>
+              <input id="s2d" type="checkbox" [checked]="t.check" (change)="t.check = !t.check" class="switch" checked>
+              <label for="s2d"></label>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+
+
+    </div>
+
+    <!-- Modal footer -->
+    <div class="modal-footer row">
+      <button type="button" class="btn btn-danger" (click)="send()">Send</button>
+      <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+    </div>
+
+  </div>
+</div>
+

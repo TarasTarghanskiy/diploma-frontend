@@ -1,0 +1,27 @@
+<div class="container">
+  <form [formGroup]="form" (submit)="submit()">
+
+    <label for="name">Term</label>
+
+
+    <input type="text" id="name" class="form-control" formControlName="term"
+           placeholder="Enter term here">
+
+
+    <div>
+      <input id="s2d" type="checkbox" class="switch" checked formControlName="block">
+      <label for="s2d">Block this term</label>
+    </div>
+
+    <div *ngIf="!form.value.block">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+    </div>
+
+    <button class="btn btn-success" type="submit" [disabled]="form.invalid">Create term</button>
+
+
+  </form>
+</div>

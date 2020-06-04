@@ -1,0 +1,12 @@
+<div class="container">
+  <form [formGroup]="postForm" (ngSubmit)="sendPost()">
+    <label>
+      Title:
+      <input formControlName="title" class="input-group-prepend input-group-text" type="text">
+    </label>
+    <div>
+      <quill-editor formControlName="text"></quill-editor>
+    </div>
+    <button class="btn btn-success">Send</button>
+  </form>
+</div>
